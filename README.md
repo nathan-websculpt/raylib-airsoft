@@ -2,7 +2,11 @@
 
 # Compile
 ```
-g++ -std=c++23 src/main.cpp src/core/wall.cpp src/core/wall_handler.cpp src/core/textured_wall.cpp src/core/textured_wall_rec.cpp src/core/colored_wall.cpp src/core/draw_utils.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+g++ -std=c++23 src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp src/projectiles/dodge_ball.cpp src/projectiles/projectile_two.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+
+// release build targeting C++23 with warnings and optimizations
+g++ -std=c++23 -O2 -march=native -flto -Wall -Wextra -Wpedantic src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp src/projectiles/dodge_ball.cpp src/projectiles/projectile_two.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+
 
 ./main
 ```
@@ -12,6 +16,7 @@ g++ -std=c++23 src/main.cpp src/core/wall.cpp src/core/wall_handler.cpp src/core
 - Each `Wall` is a class instance with its own `BoundingBox`
 - `WallHandler` manages all `Walls`
 - Analyze `BoundingBoxes` later via `WallHandler.walls`
+- You can edit `assets/configs/gear.json` while the game is running - once it is saved - it will hot-reload the configurations
 
 ## Hierarchy
 

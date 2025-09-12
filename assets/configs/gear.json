@@ -1,0 +1,29 @@
+{
+  "projectileOne": {
+    "projectileSpeed": 10.0,
+    "gravity": 2.0,
+    "muzzleOffsetRight": 0.3,
+    "muzzleOffsetUp": -0.2,
+    "fireCooldown": 0.05,
+    "projectileRadius": 0.1,
+    "projectileColor": [0, 0, 255, 255]
+  },
+  "projectileTwo": {
+    "projectileSpeed": 25.0,
+    "gravity": 0.0,
+    "muzzleOffsetRight": 0.4,
+    "muzzleOffsetUp": -0.3,
+    "fireCooldown": 0.5,
+    "projectileRadius": 0.15,
+    "projectileColor": [255, 0, 0, 255]
+  },
+  "dodgeBall": {
+    "projectileSpeed": 15.0,
+    "gravity": 5.0,
+    "muzzleOffsetRight": 0.35,
+    "muzzleOffsetUp": -0.25,
+    "fireCooldown": 1.0,
+    "projectileRadius": 0.2,
+    "projectileColor": [0, 255, 0, 255]
+  }
+}
