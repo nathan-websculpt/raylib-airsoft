@@ -12,7 +12,7 @@ void Wall::DrawDebug() {
     DrawBoundingBox(m_boundingBox, RED);
 
     for (const Vector3& point : Wall::GetCollisionPoints()) {
-        DrawSphere(point, 0.1f, BLUE);
+        DrawSphere(point, 0.1f, RED);
     }
 }
 

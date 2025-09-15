@@ -136,7 +136,7 @@ int main(void)
                             Vector3 collisionPoint = Vector3Add(p->GetBoundingBox().min, Vector3Multiply((Vector3){0.5f, 0.5f, 0.5f}, Vector3Subtract(p->GetBoundingBox().max, p->GetBoundingBox().min)));
 
                             // offset the collisionPoint along the ray that it was fired, place the mark on the face of the wall (so it will not be buried in the wall)
-                            collisionPoint = Vector3Subtract(collisionPoint, Vector3Scale(p->GetForward(), (sphereRadius * 4)));
+                            collisionPoint = Vector3Subtract(collisionPoint, Vector3Scale(p->GetForward(), sphereRadius));
                 
                             wall->AddCollisionPoint(collisionPoint);
 
