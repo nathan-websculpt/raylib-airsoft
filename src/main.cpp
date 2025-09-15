@@ -16,7 +16,6 @@
 
 int main(void)
 {
-	std::vector<Vector3> collisionPoints; // TODO:
     const int screenWidth = 4400;
     const int screenHeight = 2800;
     const std::string configFile = "assets/configs/gear.json";
@@ -125,9 +124,6 @@ int main(void)
 
             BeginMode3D(camera);
 
-            for(auto& point: collisionPoints)
-			    DrawSphere(point, 0.2f, RED);
-
                 //loop through and draw all projectiles' bounding boxes and check for collisions with wall bounding boxes
                 for (std::unique_ptr<BaseProjectile>& p : projectiles) {
                     p->draw();
@@ -136,14 +132,15 @@ int main(void)
                     for (const auto& wall : wallHandler.GetWalls()) {
                         if (CheckCollisionBoxes(p->GetBoundingBox(), wall->GetBoundingBox())) {
                             // Handle collision
-                            BoundingBox boundingBox_projectile = p->GetBoundingBox();
-                            float sphereRadius = boundingBox_projectile.max.x - boundingBox_projectile.min.x;
-                            Vector3 collisionPoint = Vector3Add(boundingBox_projectile.min, Vector3Multiply((Vector3){0.5f, 0.5f, 0.5f}, Vector3Subtract(boundingBox_projectile.max, boundingBox_projectile.min)));
+                            float sphereRadius = p->GetBoundingBox().max.x - p->GetBoundingBox().min.x;
+                            Vector3 collisionPoint = Vector3Add(p->GetBoundingBox().min, Vector3Multiply((Vector3){0.5f, 0.5f, 0.5f}, Vector3Subtract(p->GetBoundingBox().max, p->GetBoundingBox().min)));
 
-                            // offset the collisionPoint along the ray that it was fired, place the shot mark on the face of the wall (so it will not be buried in the wall)
+                            // offset the collisionPoint along the ray that it was fired, place the mark on the face of the wall (so it will not be buried in the wall)
                             collisionPoint = Vector3Subtract(collisionPoint, Vector3Scale(p->GetForward(), (sphereRadius * 4)));
                 
-                            collisionPoints.emplace_back(collisionPoint);
+                            wall->AddCollisionPoint(collisionPoint);
+
+                            p->setIsAlive(false);
                         }
                     }
                 }

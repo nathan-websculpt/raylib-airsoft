@@ -8,6 +8,16 @@ Wall::Wall(Vector3 position, Vector3 size)
     m_boundingBox = { min, max };
 }
 
-void Wall::DrawDebug() const {
+void Wall::DrawDebug() {
     DrawBoundingBox(m_boundingBox, RED);
+
+    for (const Vector3& point : Wall::GetCollisionPoints()) {
+        DrawSphere(point, 0.1f, BLUE);
+    }
 }
+
+void Wall::AddCollisionPoint(const Vector3& point) {
+    m_collisionPoints.emplace_back(point);
+}
+
+
