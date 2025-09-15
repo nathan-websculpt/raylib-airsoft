@@ -8,8 +8,7 @@ void Launcher::update(float dt) {
 }
 
 void Launcher::tryFire(Camera& cam, std::vector<std::unique_ptr<BaseProjectile>>& projectiles, int projectileType) {
-    if ((IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE)) &&
-        timeSinceLastShot >= config.fireCooldown) {
+    if ((IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE)) && timeSinceLastShot >= config.fireCooldown) {
 
         Vector3 forward = Vector3Normalize(Vector3Subtract(cam.target, cam.position));
         Vector3 right = Vector3Normalize(Vector3CrossProduct(forward, cam.up));
@@ -22,7 +21,7 @@ void Launcher::tryFire(Camera& cam, std::vector<std::unique_ptr<BaseProjectile>>
 
         std::unique_ptr<BaseProjectile> proj = std::make_unique<BaseProjectile>(muzzle, velocity, config.projectileRadius, forward, config.projectileColor, config.canBounce);
         proj->setGravity(config.gravity);
-        projectiles.push_back(std::move(proj)); // TODO: emplace?
+        projectiles.emplace_back(std::move(proj));
 
         timeSinceLastShot = 0.0f;
     }

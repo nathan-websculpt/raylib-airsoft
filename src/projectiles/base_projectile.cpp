@@ -35,3 +35,4 @@ void BaseProjectile::draw() const {
 
 bool BaseProjectile::isAlive() const { return m_alive; }
 void BaseProjectile::setGravity(float g) { m_gravity = g; }
+void BaseProjectile::setIsAlive(bool alive) { m_alive = alive; }

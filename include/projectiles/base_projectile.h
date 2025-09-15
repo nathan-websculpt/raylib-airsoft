@@ -23,12 +23,9 @@ public:
 
     bool isAlive() const;
     void setGravity(float g);
+    void setIsAlive(bool alive);
 
     [[nodiscard]] BoundingBox GetBoundingBox() const { return m_boundingBox; }
     [[nodiscard]] Vector3 GetForward() const { return m_forward; } // so that the collisions on the walls know the line of the projectile
 
-    void setIsAlive(bool alive) { m_alive = alive; }
-
-    // [[nodiscard]] Vector3 GetPosition() const { return m_position; }
-    // [[nodiscard]] Vector3 GetSize() const { return m_size; }
 };
