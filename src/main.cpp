@@ -9,10 +9,10 @@
 #include "../include/walls/managed_texture.h"
 #include "../include/projectiles/launcher.h"
 
-// g++ -std=c++23 src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp src/projectiles/dodge_ball.cpp src/projectiles/projectile_two.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+// g++ -std=c++23 src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp src/projectiles/dodge_ball.cpp src/projectiles/projectile_one.cpp src/projectiles/projectile_two.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
 // release build targeting C++23 with warnings and optimizations
-// g++ -std=c++23 -O2 -march=native -flto -Wall -Wextra -Wpedantic src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp src/projectiles/dodge_ball.cpp src/projectiles/projectile_two.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+// g++ -std=c++23 -O2 -march=native -flto -Wall -Wextra -Wpedantic src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp src/projectiles/dodge_ball.cpp src/projectiles/projectile_one.cpp src/projectiles/projectile_two.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
 int main(void)
 {

@@ -17,9 +17,9 @@ public:
     virtual void Draw() const = 0;     // Pure virtual
     virtual void DrawDebug() const;
 
-    [[nodiscard]] BoundingBox GetBoundingBox() const { return m_boundingBox; }
 
     // getters for private members
+    [[nodiscard]] BoundingBox GetBoundingBox() const { return m_boundingBox; }
     [[nodiscard]] Vector3 GetPosition() const { return m_position; }
     [[nodiscard]] Vector3 GetSize() const { return m_size; }
 };
