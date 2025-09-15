@@ -8,11 +8,12 @@ protected:
     float m_radius;
     Color m_color;
     bool m_alive;
+    bool m_canBounce;
     float m_gravity;
     BoundingBox m_boundingBox;
 
 public:
-    BaseProjectile(Vector3 pos, Vector3 vel, float radius, Color color);
+    BaseProjectile(Vector3 pos, Vector3 vel, float radius, Color color, bool canBounce);
     virtual ~BaseProjectile();
 
     virtual void update(float dt);

@@ -1,7 +1,6 @@
 #pragma once
 #include "gear_config.h"
-#include "projectile_two.h"
-#include "dodge_ball.h"
+#include "base_projectile.h"
 
 class Launcher {
 private:

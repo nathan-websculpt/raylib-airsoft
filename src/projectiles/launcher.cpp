@@ -21,26 +21,9 @@ void Launcher::tryFire(Camera& cam, std::vector<std::unique_ptr<BaseProjectile>>
 
         Vector3 velocity = Vector3Scale(forward, config.projectileSpeed);
 
-        switch (projectileType) {
-            case 0: {
-                std::unique_ptr<BaseProjectile> proj = std::make_unique<BaseProjectile>(muzzle, velocity, config.projectileRadius, config.projectileColor);
-                proj->setGravity(config.gravity);
-                projectiles.push_back(std::move(proj));
-                break;
-            }
-            case 1: {
-                std::unique_ptr<BaseProjectile> proj = std::make_unique<ProjectileTwo>(muzzle, velocity, config.projectileRadius, RED);
-                proj->setGravity(0.0f);
-                projectiles.push_back(std::move(proj));
-                break;
-            }
-            case 2: {
-                std::unique_ptr<BaseProjectile> proj = std::make_unique<DodgeBall>(muzzle, velocity, config.projectileRadius, DARKGREEN);
-                proj->setGravity(config.gravity);
-                projectiles.push_back(std::move(proj));
-                break;
-            }
-        }
+        std::unique_ptr<BaseProjectile> proj = std::make_unique<BaseProjectile>(muzzle, velocity, config.projectileRadius, config.projectileColor, config.canBounce);
+        proj->setGravity(config.gravity);
+        projectiles.push_back(std::move(proj)); // TODO: emplace?
 
         timeSinceLastShot = 0.0f;
     }

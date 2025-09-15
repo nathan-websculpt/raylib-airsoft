@@ -7,6 +7,7 @@ inline void from_json(const nlohmann::json& j, GearConfig& cfg) {
     cfg.muzzleOffsetUp    = j.at("muzzleOffsetUp").get<float>();
     cfg.fireCooldown      = j.at("fireCooldown").get<float>();
     cfg.projectileRadius  = j.at("projectileRadius").get<float>();
+    cfg.canBounce         = j.at("canBounce").get<bool>();
 
     std::vector<int> color = j.at("projectileColor").get<std::vector<int>>();
     if (color.size() == 4)

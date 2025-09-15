@@ -11,6 +11,7 @@ struct GearConfig {
     float fireCooldown;
     float projectileRadius;
     Color projectileColor;
+    bool canBounce;
 };
 
 std::map<std::string, GearConfig> LoadGearConfigs(const std::string& filename);
