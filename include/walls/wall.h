@@ -25,5 +25,5 @@ public:
     [[nodiscard]] BoundingBox GetBoundingBox() const { return m_boundingBox; }
     [[nodiscard]] Vector3 GetPosition() const { return m_position; }
     [[nodiscard]] Vector3 GetSize() const { return m_size; }    
-    [[nodiscard]] std::vector<Vector3> GetCollisionPoints() { return m_collisionPoints; }
+    [[nodiscard]] std::vector<Vector3> GetCollisionPoints() const { return m_collisionPoints; }
 };
