@@ -124,7 +124,7 @@ int main(void)
 
             BeginMode3D(camera);
 
-                //loop through and draw all projectiles' bounding boxes and check for collisions with wall bounding boxes
+                // check for collisions with projectiles and wall bounding boxes
                 for (std::unique_ptr<BaseProjectile>& p : projectiles) {
                     p->draw();
 
