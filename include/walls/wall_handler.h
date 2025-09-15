@@ -23,4 +23,6 @@ public:
 
     void AddWall(std::unique_ptr<Wall> wall);
     void DrawWalls(bool debug = false) const;
+    
+    [[nodiscard]] const std::vector<std::unique_ptr<Wall>>& GetWalls() const { return m_walls; }
 };

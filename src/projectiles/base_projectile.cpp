@@ -1,8 +1,8 @@
 #include "../../include/projectiles/base_projectile.h"
 #include "raymath.h"
 
-BaseProjectile::BaseProjectile(Vector3 pos, Vector3 vel, float radius, Color color, bool canBounce)
-    : m_position(pos), m_velocity(vel), m_radius(radius), m_color(color), m_canBounce(canBounce), m_alive(true), m_gravity(2.0f) {}
+BaseProjectile::BaseProjectile(Vector3 pos, Vector3 vel, float radius, Vector3 forward, Color color, bool canBounce)
+    : m_position(pos), m_velocity(vel), m_radius(radius), m_forward(forward), m_color(color), m_canBounce(canBounce), m_alive(true), m_gravity(2.0f) {}
 
 BaseProjectile::~BaseProjectile() = default;
 

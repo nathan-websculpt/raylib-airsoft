@@ -20,7 +20,7 @@ void Launcher::tryFire(Camera& cam, std::vector<std::unique_ptr<BaseProjectile>>
 
         Vector3 velocity = Vector3Scale(forward, config.projectileSpeed);
 
-        std::unique_ptr<BaseProjectile> proj = std::make_unique<BaseProjectile>(muzzle, velocity, config.projectileRadius, config.projectileColor, config.canBounce);
+        std::unique_ptr<BaseProjectile> proj = std::make_unique<BaseProjectile>(muzzle, velocity, config.projectileRadius, forward, config.projectileColor, config.canBounce);
         proj->setGravity(config.gravity);
         projectiles.push_back(std::move(proj)); // TODO: emplace?
 
