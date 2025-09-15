@@ -15,7 +15,6 @@ void Launcher::tryFire(Camera& cam, std::vector<std::unique_ptr<BaseProjectile>>
         Vector3 right = Vector3Normalize(Vector3CrossProduct(forward, cam.up));
         Vector3 up = Vector3CrossProduct(right, forward);
 
-
         Vector3 muzzle = Vector3Add(cam.position, Vector3Scale(right, config.muzzleOffsetRight));
         muzzle = Vector3Add(muzzle, Vector3Scale(up, config.muzzleOffsetUp));
 

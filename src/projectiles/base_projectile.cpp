@@ -23,7 +23,7 @@ void BaseProjectile::update(float dt) {
         }
     }
 
-    if (m_position.y < 0.0f) m_alive = false;
+    if (m_position.y < 0.0f) m_alive = false; // TODO: use configs
 }
 
 void BaseProjectile::draw() const {
