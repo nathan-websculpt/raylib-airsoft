@@ -8,6 +8,9 @@
 #include "../include/walls/colored_wall.h"
 #include "../include/walls/managed_texture.h"
 #include "../include/projectiles/launcher.h"
+#include "../include/opponents/components.h"
+#include "../include/opponents/systems.h"
+#include "../include/opponents/opponents.h"
 
 // g++ -std=c++23 src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
@@ -33,6 +36,12 @@ int main(void)
     int cameraMode = CAMERA_FIRST_PERSON;
     DisableCursor();
     SetTargetFPS(60);
+
+    OpponentStore opponents;
+
+    // Spawn two different opponents
+    spawnOpponent(opponents, {0, 0.1f, 0}, 0.002f, 10, BLUE, {0.5f, 5.0f, 0.5f});     // fast, fragile
+    spawnOpponent(opponents, {5, 0.1f, 5}, 0.0005f, 100, DARKGRAY, {1.0f, 6.0f, 1.0f}); // slow, tough
 
     // WALLS
     // RAII Texture
@@ -128,6 +137,7 @@ int main(void)
                 // check for collisions with projectiles and wall bounding boxes
                 for (std::unique_ptr<BaseProjectile>& p : projectiles) {
                     p->draw(isDebug);
+                    damageSystem(opponents.healths, opponents.bounds, p->GetBoundingBox()); // check for damage to opponents
 
                     // loop all walls
                     for (const auto& wall : wallHandler.GetWalls()) {
@@ -149,6 +159,12 @@ int main(void)
                 DrawPlane((Vector3){ 0.0f, 0.0f, 0.0f }, (Vector2){ 32.0f, 32.0f }, LIGHTGRAY);
                 wallHandler.DrawWalls(isDebug);
 
+
+                // OPPONENTS
+                movementSystem(opponents.positions, opponents.movements, camera.position);
+                boundingSystem(opponents.positions, opponents.bounds);
+                renderSystem(opponents.positions, opponents.bounds, opponents.healths, opponents.renders);
+                
             EndMode3D();
         EndDrawing();
     }
