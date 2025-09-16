@@ -1,7 +1,7 @@
 #pragma once
 #include "raylib.h"
 
-class BaseProjectile {
+class Projectile {
 protected:
     Vector3 m_position;
     Vector3 m_velocity;
@@ -14,8 +14,8 @@ protected:
     BoundingBox m_boundingBox;
 
 public:
-    BaseProjectile(Vector3 pos, Vector3 vel, float radius, Vector3 forward, Color color, bool canBounce);
-    virtual ~BaseProjectile();
+    Projectile(Vector3 pos, Vector3 vel, float radius, Vector3 forward, Color color, bool canBounce);
+    virtual ~Projectile();
 
     virtual void update(float dt);
     virtual void draw(bool isDebug) const;

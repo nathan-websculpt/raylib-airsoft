@@ -1,6 +1,6 @@
 #pragma once
 #include "gear_config.h"
-#include "base_projectile.h"
+#include "projectile.h"
 
 class Launcher {
 private:
@@ -12,7 +12,7 @@ public:
 
     void update(float dt);
 
-    void tryFire(Camera& cam, std::vector<std::unique_ptr<BaseProjectile>>& projectiles, int projectileType);
+    void tryFire(Camera& cam, std::vector<std::unique_ptr<Projectile>>& projectiles, int projectileType);
 
     void setConfig(const GearConfig& cfg);
 };

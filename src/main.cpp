@@ -12,10 +12,10 @@
 #include "../include/opponents/systems.h"
 #include "../include/opponents/opponents.h"
 
-// g++ -std=c++23 src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+// g++ -std=c++23 src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/projectile.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
 // release build targeting C++23 with warnings and optimizations
-// g++ -std=c++23 -O2 -march=native -flto -Wall -Wextra -Wpedantic src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/base_projectile.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+// g++ -std=c++23 -O2 -march=native -flto -Wall -Wextra -Wpedantic src/main.cpp src/walls/wall.cpp src/walls/wall_handler.cpp src/walls/textured_wall.cpp src/walls/textured_wall_rec.cpp src/walls/colored_wall.cpp src/walls/draw_utils.cpp src/projectiles/gear_config.cpp src/projectiles/launcher.cpp src/projectiles/projectile.cpp -o main -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
 int main(void)
 {
@@ -85,7 +85,7 @@ int main(void)
     Launcher projectileTwo(configs["projectileTwo"]);
     Launcher dodgeBall(configs["dodgeBall"]);
 
-    std::vector<std::unique_ptr<BaseProjectile>> projectiles;
+    std::vector<std::unique_ptr<Projectile>> projectiles;
     int projectileType = 0;
     // END: PROJECTILES
 
@@ -122,8 +122,8 @@ int main(void)
         else if (projectileType == 1) projectileTwo.tryFire(camera, projectiles, 1);
         else if (projectileType == 2) dodgeBall.tryFire(camera, projectiles, 2);
 
-        for (std::unique_ptr<BaseProjectile>& p : projectiles) p->update(dt);
-        std::erase_if(projectiles, [](const std::unique_ptr<BaseProjectile>& p) { return !p->isAlive(); });
+        for (std::unique_ptr<Projectile>& p : projectiles) p->update(dt);
+        std::erase_if(projectiles, [](const std::unique_ptr<Projectile>& p) { return !p->isAlive(); });
         // END: PROJECTILES
 
 
@@ -135,7 +135,7 @@ int main(void)
             BeginMode3D(camera);
 
                 // check for collisions with projectiles and wall bounding boxes
-                for (std::unique_ptr<BaseProjectile>& p : projectiles) {
+                for (std::unique_ptr<Projectile>& p : projectiles) {
                     p->draw(isDebug);
                     damageSystem(opponents.healths, opponents.bounds, p->GetBoundingBox()); // check for damage to opponents
 
