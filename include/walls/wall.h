@@ -17,8 +17,10 @@ public:
     virtual ~Wall() = default;
 
     virtual void Draw() const = 0;     // Pure virtual
-    virtual void DrawDebug();
+    virtual void DrawDebug() const;
     virtual void AddCollisionPoint(const Vector3& point);
+
+    void DrawCollisionPoints() const;
 
 
     // getters for private members

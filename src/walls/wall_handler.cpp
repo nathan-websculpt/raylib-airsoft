@@ -7,6 +7,7 @@ void WallHandler::AddWall(std::unique_ptr<Wall> wall) {
 void WallHandler::DrawWalls(bool debug) const {
     for (const std::unique_ptr<Wall>& wall : m_walls) {
         wall->Draw();
-        if (debug) wall->DrawDebug();
+        wall->DrawCollisionPoints();
+        if (debug) wall->DrawDebug(); // just for bounding boxes
     }
 }
