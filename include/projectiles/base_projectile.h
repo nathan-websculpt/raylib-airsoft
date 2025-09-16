@@ -18,8 +18,7 @@ public:
     virtual ~BaseProjectile();
 
     virtual void update(float dt);
-    virtual void draw() const;
-    // virtual void DrawDebug() const;
+    virtual void draw(bool isDebug) const;
 
     bool isAlive() const;
     void setGravity(float g);

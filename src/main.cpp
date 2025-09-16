@@ -19,6 +19,7 @@ int main(void)
     const int screenWidth = 4400;
     const int screenHeight = 2800;
     const std::string configFile = "assets/configs/gear.json";
+    bool isDebug = false;
 
     InitWindow(screenWidth, screenHeight, "FPS SYSTEM");
 
@@ -126,7 +127,7 @@ int main(void)
 
                 // check for collisions with projectiles and wall bounding boxes
                 for (std::unique_ptr<BaseProjectile>& p : projectiles) {
-                    p->draw();
+                    p->draw(isDebug);
 
                     // loop all walls
                     for (const auto& wall : wallHandler.GetWalls()) {
@@ -146,7 +147,7 @@ int main(void)
                 }
 
                 DrawPlane((Vector3){ 0.0f, 0.0f, 0.0f }, (Vector2){ 32.0f, 32.0f }, LIGHTGRAY);
-                wallHandler.DrawWalls(true);
+                wallHandler.DrawWalls(isDebug);
 
             EndMode3D();
         EndDrawing();

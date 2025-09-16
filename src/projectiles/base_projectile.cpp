@@ -26,10 +26,10 @@ void BaseProjectile::update(float dt) {
     if (m_position.y < 0.0f) m_alive = false; // TODO: use configs
 }
 
-void BaseProjectile::draw() const {
+void BaseProjectile::draw(bool isDebug) const {
     if (m_alive) {
         DrawSphere(m_position, m_radius, m_color);
-        DrawBoundingBox(m_boundingBox, RED);
+        if (isDebug) DrawBoundingBox(m_boundingBox, RED);
     }
 }
 
